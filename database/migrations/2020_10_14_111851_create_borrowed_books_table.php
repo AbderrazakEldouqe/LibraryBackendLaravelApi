@@ -15,6 +15,7 @@ class CreateBorrowedBooksTable extends Migration
     {
         Schema::create('borrowed_books', function (Blueprint $table) {
             $table->id();
+            $table->string('borrowed_book_id_public')->unique();
             $table->dateTime('borrowing_date');
             $table->dateTime('receiving_date');
             $table->dateTime('return_date');

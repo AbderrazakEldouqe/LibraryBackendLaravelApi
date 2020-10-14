@@ -121,6 +121,11 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
     </include_path>
   </component>
   <component name="ProjectId" id="1irjXvnnOYdEqLRwU2igJzBFBh5" />
@@ -132,6 +137,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -147,11 +153,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602672652067</updated>
-      <workItem from="1602672655391" duration="3171000" />
+      <workItem from="1602672655391" duration="6912000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser" timestamp="1602676870461">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1602676870461" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602677188745">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1602677188745" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602677526195">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1602677526195" />
   </component>
 </project>

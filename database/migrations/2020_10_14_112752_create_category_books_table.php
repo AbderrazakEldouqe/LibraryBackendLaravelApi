@@ -15,6 +15,7 @@ class CreateCategoryBooksTable extends Migration
     {
         Schema::create('category_books', function (Blueprint $table) {
             $table->id();
+            $table->string('category_book_id_public')->unique();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')
                 ->references('id')

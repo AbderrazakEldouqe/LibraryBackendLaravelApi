@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('category_id_public')->unique();
             $table->string('name');
-            $table->integer('books_count');
+            $table->integer('books_count')->nullable()->default(0);
             $table->timestamps();
         });
     }

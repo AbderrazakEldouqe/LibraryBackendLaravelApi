@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\AppHelper;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use JWTAuth;
 
 class CategoryController extends Controller
 {
@@ -13,64 +16,39 @@ class CategoryController extends Controller
     {
         $this->user = JWTAuth::parseToken()->authenticate();
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $categories = Category::all();
 
-        return TaskResource::collection($categories);
+        return CategoryResource::collection($categories);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $category = new Category();
         $category->name = $request->name;
-
-
-        if ($category->save())
-            return new TaskResource($category);
+        if ($category->save()){
+            return new CategoryResource($category);
+        }
         else
             return AppHelper::storeError('category');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $category =  Category::where('category_id_public','=',$id)->first();
+        $category = Category::where('category_id_public', '=', $id)->first();
 
 
         if (!$category) {
-            return AppHelper::notFoundError($id, 'category
-            ');
+            return AppHelper::notFoundError($id, 'category');
         }
-        return new TaskResource($category);
+        return new CategoryResource($category);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        $category = Category::where('category_id_public','=',$id)->first();
+        $category = Category::where('category_id_public', '=', $id)->first();
 
         if (!$category) {
             return AppHelper::notFoundError($id, 'category');
@@ -79,21 +57,15 @@ class CategoryController extends Controller
         $updated = $category->fill($request->all())->save();
 
         if ($updated) {
-            return new TaskResource($category);
+            return new CategoryResource($category);
         } else {
             return AppHelper::updateError($id, 'category');
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        $category = Category::where('category_id_public','=',$id)->first();
+        $category = Category::where('category_id_public', '=', $id)->first();
 
         if (!$category) {
             return AppHelper::notFoundError($id, 'category');

@@ -75,7 +75,7 @@ class AuthController extends Controller
         // if ($user->save()) {
         if ($role->users()->save($user)) {
             return new UserResource($user);
-        }else{
+        } else {
             return AppHelper::registerError();
         }
     }

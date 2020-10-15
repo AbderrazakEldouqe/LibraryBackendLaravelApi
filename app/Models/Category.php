@@ -11,6 +11,7 @@ class Category extends Model
     use HasFactory;
 
     protected $table = 'categories';
+    protected $guarded = [];
 
     public function books()
     {
@@ -18,12 +19,14 @@ class Category extends Model
             Book::class,
             'category_books');
     }
+
     protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($query) {
             $query->category_id_public = Str::random(32);
+            $query->books_count = 0;
         });
     }
 }

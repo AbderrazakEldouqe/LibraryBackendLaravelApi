@@ -20,9 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e1a2b34-8e32-465a-890b-971e9fbe1aa0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/factories/RoleFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/RoleSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_14_110545_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_14_110545_create_categories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LanguageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LanguageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/CategoryResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/CategoryResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/LanguageResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/LanguageResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Language.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Language.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_11_110135_create_roles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_11_110135_create_roles_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,11 +162,15 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1irjXvnnOYdEqLRwU2igJzBFBh5" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -206,15 +218,18 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser" timestamp="1602676870461">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1602676870461" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602677188745">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602754492651">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1602677188745" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1602754492651" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602677526195">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

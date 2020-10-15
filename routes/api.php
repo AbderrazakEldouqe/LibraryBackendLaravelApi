@@ -25,4 +25,5 @@ Route::group(['middleware' => 'auth.jwt', 'as' => 'api.'], function () {
     Route::post('auth.logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('auth.logout');
     Route::apiResource('categories', \App\Http\Controllers\CategoryController::class);
     Route::apiResource('languages', \App\Http\Controllers\LanguageController::class);
+    Route::apiResource('books', \App\Http\Controllers\BookController::class);
 });

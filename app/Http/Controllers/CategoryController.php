@@ -28,6 +28,7 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $category->name = $request->name;
+
         if ($category->save()){
             return new CategoryResource($category);
         }

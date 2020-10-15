@@ -23,7 +23,8 @@ class BookResource extends JsonResource
             'sotck_quantity' => $this->sotck_quantity,
             'image' => $this->image,
             'description' => $this->description,
-            'language_id'=> $this->language->language_id_public
+            'language_id'=> $this->language->language_id_public,
+            'categories' => CategoryResource::collection($this->categories)
         ];
     }
 }

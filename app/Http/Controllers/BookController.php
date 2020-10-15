@@ -29,10 +29,11 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
-        $language= Language::where('language_id_public', '=', $request->language_id)->first();
+        $language = Language::where('language_id_public', '=', $request->language_id)->first();
         if (!$language) {
             return AppHelper::notFoundError($request->language_id, 'Language');
         }
+
         $book = new Book();
         $book->isbn = $request->isbn;
         $book->title = $request->title;
@@ -42,10 +43,22 @@ class BookController extends Controller
         $book->image = $request->image;
         $book->description = $request->description;
 
-        if ($language->books()->save($book)){
-            return new BookResource($book);
+        $arr = array();
+
+        if (count($request->categories) > 0) {
+            foreach ($request->categories as $c) {
+                $category = Category::where('category_id_public', '=', $c["id"])->first();
+                if (!$language) {
+                    return AppHelper::notFoundError($c->id, 'Categorie');
+                }
+                $arr[] = $category->id;
+            }
         }
-        else
+
+        if ($language->books()->save($book)) {
+            $book->categories()->sync($arr);
+            return new BookResource($book);
+        } else
             return AppHelper::storeError('book');
     }
 
@@ -68,7 +81,7 @@ class BookController extends Controller
             return AppHelper::notFoundError($id, 'book');
         }
 
-        $language= Language::where('language_id_public', '=', $request->language_id)->first();
+        $language = Language::where('language_id_public', '=', $request->language_id)->first();
         if (!$language) {
             return AppHelper::notFoundError($request->language_id, 'Language');
         }
@@ -82,9 +95,22 @@ class BookController extends Controller
         $book->description = $request->description;
         $book->language()->associate($language);
 
+        $arr = array();
+
+        if (count($request->categories) > 0) {
+            foreach ($request->categories as $c) {
+                $category = Category::where('category_id_public', '=', $c["id"])->first();
+                if (!$language) {
+                    return AppHelper::notFoundError($c->id, 'Categorie');
+                }
+                $arr[] = $category->id;
+            }
+        }
+
         $updated = $book->save();
 
         if ($updated) {
+            $book->categories()->sync($arr);
             return new BookResource($book);
         } else {
             return AppHelper::updateError($id, 'book');

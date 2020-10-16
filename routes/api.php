@@ -28,4 +28,7 @@ Route::group(['middleware' => 'auth.jwt', 'as' => 'api.'], function () {
     Route::apiResource('books', \App\Http\Controllers\BookController::class);
     Route::apiResource('borrowedBooks', \App\Http\Controllers\BorrowedBookController::class);
     Route::post('borrowedBooks/reserve', [\App\Http\Controllers\BorrowedBookController::class,'reserveBook']);
+    Route::post('borrowedBooks/according', [\App\Http\Controllers\BorrowedBookController::class,'accordingReservation']);
+    Route::post('borrowedBooks/returning', [\App\Http\Controllers\BorrowedBookController::class,'returningBook']);
+    Route::post('borrowedBooks/canceling', [\App\Http\Controllers\BorrowedBookController::class,'cancelingReservationBook']);
 });

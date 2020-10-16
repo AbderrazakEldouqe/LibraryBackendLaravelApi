@@ -20,4 +20,10 @@ class BorrowedBook extends Model
 //            $query->borrowed_book_id_public = Str::random(32);
 //        });
     }
+
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
+
 }

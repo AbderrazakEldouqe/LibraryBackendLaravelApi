@@ -21,7 +21,10 @@ class BorrowedBookController extends Controller
 
     public function index()
     {
-        //
+        $borrowingBooks = BorrowedBook::where('canceled_borrowed_book', '=', 0)
+            ->whereNull('receiving_date')->with('book')
+            ->get();
+        return $borrowingBooks;
     }
 
     public function store(Request $request)
@@ -65,15 +68,103 @@ class BorrowedBookController extends Controller
         if ($borrowed_book->save()) {
             $book->sotck_quantity--;
             if ($book->save()) {
-                return AppHelper::reservedSuccess($book_id, 'Book');
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Book with id ' . $book_id . ' has been reserved '
+                ], 200);
             }
         }
-        return AppHelper::reservedError($book_id, 'Book');
+        return response()->json([
+            'success' => false,
+            'message' => 'Sorry, Book with id ' . $book_id . ' Cannot be reserved '
+        ], 500);
 //        $books_current_user = $this->user->books()->attach($borrowed_book,
 //            [
 //                'borrowing_date' => Carbon::now(),
 //                'borrowed_book_id_public' => Str::random(32)
 //            ]);
 
+    }
+
+    public function accordingReservation(Request $request)
+    {
+        $borrowed_book_id = $request->borrowed_book_id;
+        $borrowedBook = BorrowedBook::where('borrowed_book_id_public', '=', $borrowed_book_id)->first();
+
+        if (!$borrowedBook) {
+            return AppHelper::notFoundError($borrowed_book_id, 'Borrowed Book');
+        }
+        $borrowedBook->receiving_date = Carbon::now();
+        // check estamted date > date system
+        $borrowedBook->estimated_return_date = $request->estimated_return_date;
+        if ($borrowedBook->save()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Book has been delivered '
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Sorry, Book Cannot be delivered for the moment '
+        ], 500);
+
+    }
+
+    public function returningBook(Request $request)
+    {
+
+        $borrowed_book_id = $request->borrowed_book_id;
+        $borrowedBook = BorrowedBook::where('borrowed_book_id_public', '=', $borrowed_book_id)->first();
+
+        if (!$borrowedBook) {
+            return AppHelper::notFoundError($borrowed_book_id, 'Borrowed Book');
+        }
+
+        $borrowedBook->return_date = Carbon::now();
+
+        if ($borrowedBook->save()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Book has been returned '
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Sorry, Book Cannot be returned for the moment '
+        ], 500);
+    }
+
+    public function cancelingReservationBook(Request $request)
+    {
+
+        $borrowed_book_id = $request->borrowed_book_id;
+        $borrowedBook = BorrowedBook::where('borrowed_book_id_public', '=', $borrowed_book_id)->first();
+
+        if (!$borrowedBook) {
+            return AppHelper::notFoundError($borrowed_book_id, 'Borrowed Book');
+        }
+        $book = Book::where('id', '=', $borrowedBook->book_id)->first();
+
+        if (!$book) {
+            return AppHelper::notFoundError($borrowedBook->book_id, 'book');
+        }
+
+        $borrowedBook->canceled_borrowed_book = true;
+
+        if ($borrowedBook->save()) {
+            $book->sotck_quantity++;
+            if ($book->save()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Book with id ' . $book->book_id_public . ' has been canceled '
+                ], 200);
+            }
+        }
+        return response()->json([
+            'success' => false,
+            'message' => 'Sorry, Book with id ' . $book->book_id_public . ' Cannot be reserved '
+        ], 500);
     }
 }

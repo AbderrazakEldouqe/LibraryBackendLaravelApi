@@ -77,4 +77,28 @@ class AppHelper
             'message' => $modelName . ' with id ' . $id . ' has been deleted '
         ], 200);
     }
+
+    public static function LackOfQuantityStockBookError($id, $modelName)
+    {
+        return response()->json([
+            'success' => false,
+            'message' => 'Sorry, ' . $modelName . ' with id ' . $id . ' isnt available anymore '
+        ], 404);
+    }
+    public static function reservedSuccess($id, $modelName)
+    {
+        return response()->json([
+            'success' => true,
+            'message' => $modelName . ' with id ' . $id . ' has been reserved '
+        ], 200);
+    }
+
+    public static function reservedError($id, $modelName)
+    {
+        return response()->json([
+            'success' => false,
+            'message' => 'Sorry, ' . $modelName . ' with id ' . $id . ' Cannot be reserved '
+        ], 500);
+    }
+
 }

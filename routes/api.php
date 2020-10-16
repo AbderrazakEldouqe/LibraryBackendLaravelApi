@@ -26,4 +26,6 @@ Route::group(['middleware' => 'auth.jwt', 'as' => 'api.'], function () {
     Route::apiResource('categories', \App\Http\Controllers\CategoryController::class);
     Route::apiResource('languages', \App\Http\Controllers\LanguageController::class);
     Route::apiResource('books', \App\Http\Controllers\BookController::class);
+    Route::apiResource('borrowedBooks', \App\Http\Controllers\BorrowedBookController::class);
+    Route::post('borrowedBooks/reserve', [\App\Http\Controllers\BorrowedBookController::class,'reserveBook']);
 });

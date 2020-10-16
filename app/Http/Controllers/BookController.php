@@ -66,7 +66,6 @@ class BookController extends Controller
     {
         $book = Book::where('book_id_public', '=', $id)->first();
 
-
         if (!$book) {
             return AppHelper::notFoundError($id, 'book');
         }

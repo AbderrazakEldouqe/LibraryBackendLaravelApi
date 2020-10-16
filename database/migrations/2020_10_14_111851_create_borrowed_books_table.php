@@ -17,9 +17,10 @@ class CreateBorrowedBooksTable extends Migration
             $table->id();
             $table->string('borrowed_book_id_public')->unique();
             $table->dateTime('borrowing_date');
-            $table->dateTime('receiving_date');
-            $table->dateTime('return_date');
-            $table->boolean('canceled');
+            $table->dateTime('receiving_date')->nullable();
+            $table->dateTime('estimated_return_date')->nullable();
+            $table->dateTime('return_date')->nullable();
+            $table->boolean('canceled_borrowed_book')->nullable()->default(0);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')

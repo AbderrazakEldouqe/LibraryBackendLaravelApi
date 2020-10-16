@@ -20,10 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e1a2b34-8e32-465a-890b-971e9fbe1aa0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BorrowedBookController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/BorrowedBook.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Observers/BorrowedBookObserver.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/AppHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/AppHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/BookResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/BookResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_14_112752_create_category_books_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_14_112752_create_category_books_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_14_111851_create_borrowed_books_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_14_111851_create_borrowed_books_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +201,7 @@
       <workItem from="1602711814175" duration="3179000" />
       <workItem from="1602728063034" duration="1818000" />
       <workItem from="1602756742060" duration="6808000" />
+      <workItem from="1602840366847" duration="13636000" />
     </task>
     <servers />
   </component>
@@ -222,17 +228,21 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1602676870461" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602760014235">
+    <state x="364" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602848962214">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1602760014235" />
+    <state x="364" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1602848962214" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602852261253">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1602852261253" />
     <state x="645" y="242" width="1060" height="605" key="dock-window-1" timestamp="1602761164595">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="645" y="242" width="1060" height="605" key="dock-window-1/0.0.1366.728@0.0.1366.728" timestamp="1602761164595" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602677526195">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602851221544">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1602677526195" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1602851221544" />
   </component>
 </project>

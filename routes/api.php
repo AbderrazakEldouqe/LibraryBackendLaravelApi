@@ -32,4 +32,6 @@ Route::group(['middleware' => 'auth.jwt', 'as' => 'api.'], function () {
     Route::post('borrowedBooks/returning', [\App\Http\Controllers\BorrowedBookController::class,'returningBook']);
     Route::post('borrowedBooks/canceling', [\App\Http\Controllers\BorrowedBookController::class,'cancelingReservationBook']);
     Route::get('borrowedBooks/delay', [\App\Http\Controllers\BorrowedBookController::class,'delayedBorrowedBooks']);
+    Route::apiResource('users', \App\Http\Controllers\UserController::class)->except(['index']);;
+    Route::get('usersByRole/{roleId}',[\App\Http\Controllers\UserController::class,'index']);
 });

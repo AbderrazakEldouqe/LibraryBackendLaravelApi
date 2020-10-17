@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 class BorrowedBook extends Model
 {
     use HasFactory;
+
     protected $table = 'borrowed_books';
 
     protected static function boot()
@@ -26,4 +27,8 @@ class BorrowedBook extends Model
         return $this->belongsTo(Book::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

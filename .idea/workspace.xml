@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e1a2b34-8e32-465a-890b-971e9fbe1aa0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/BorrowedBookResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/AppHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/AppHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BorrowedBookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BorrowedBookController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/BorrowedBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BorrowedBook.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
@@ -197,7 +197,8 @@
       <workItem from="1602711814175" duration="3179000" />
       <workItem from="1602728063034" duration="1818000" />
       <workItem from="1602756742060" duration="6808000" />
-      <workItem from="1602840366847" duration="16935000" />
+      <workItem from="1602840366847" duration="17678000" />
+      <workItem from="1602948084195" duration="2550000" />
     </task>
     <servers />
   </component>
@@ -220,6 +221,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="137" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602948781876">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1602948781876" />
     <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser" timestamp="1602676870461">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\AppHelper;
+use App\Http\Resources\BorrowedBookResource;
 use App\Models\Book;
 use App\Models\BorrowedBook;
 use Carbon\Carbon;
@@ -22,9 +23,11 @@ class BorrowedBookController extends Controller
     public function index()
     {
         $borrowingBooks = BorrowedBook::where('canceled_borrowed_book', '=', 0)
-            ->whereNull('receiving_date')->with('book')
+            ->whereNull('receiving_date')
+            ->with('book')
+            ->with('user')
             ->get();
-        return $borrowingBooks;
+        return BorrowedBookResource::collection($borrowingBooks);
     }
 
     public function store(Request $request)
@@ -167,4 +170,16 @@ class BorrowedBookController extends Controller
             'message' => 'Sorry, Book with id ' . $book->book_id_public . ' Cannot be reserved '
         ], 500);
     }
+
+    public function delayedBorrowedBooks()
+    {
+        $borrowedBook = BorrowedBook::where('estimated_return_date', '<', Carbon::now())
+            ->where('canceled_borrowed_book', '=', 0)
+            ->whereNull('return_date')
+            ->with('book')
+            ->with('user')
+            ->get();
+        return BorrowedBookResource::collection($borrowedBook);
+    }
+
 }

@@ -26,9 +26,10 @@ Route::group(['middleware' => 'auth.jwt', 'as' => 'api.'], function () {
     Route::apiResource('categories', \App\Http\Controllers\CategoryController::class);
     Route::apiResource('languages', \App\Http\Controllers\LanguageController::class);
     Route::apiResource('books', \App\Http\Controllers\BookController::class);
-    Route::apiResource('borrowedBooks', \App\Http\Controllers\BorrowedBookController::class);
+    Route::apiResource('borrowedBooks', \App\Http\Controllers\BorrowedBookController::class)->except(['store','show','update','destroy']);
     Route::post('borrowedBooks/reserve', [\App\Http\Controllers\BorrowedBookController::class,'reserveBook']);
     Route::post('borrowedBooks/according', [\App\Http\Controllers\BorrowedBookController::class,'accordingReservation']);
     Route::post('borrowedBooks/returning', [\App\Http\Controllers\BorrowedBookController::class,'returningBook']);
     Route::post('borrowedBooks/canceling', [\App\Http\Controllers\BorrowedBookController::class,'cancelingReservationBook']);
+    Route::get('borrowedBooks/delay', [\App\Http\Controllers\BorrowedBookController::class,'delayedBorrowedBooks']);
 });

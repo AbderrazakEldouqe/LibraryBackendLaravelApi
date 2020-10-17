@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\AppHelper;
+use App\Http\Requests\BookFormRequest;
 use App\Http\Resources\BookResource;
 use App\Http\Resources\CategoryResource;
 use App\Models\Book;
@@ -27,7 +28,7 @@ class BookController extends Controller
         return BookResource::collection($books);
     }
 
-    public function store(Request $request)
+    public function store(BookFormRequest $request)
     {
         $language = Language::where('language_id_public', '=', $request->language_id)->first();
         if (!$language) {
@@ -72,7 +73,7 @@ class BookController extends Controller
         return new BookResource($book);
     }
 
-    public function update(Request $request, $id)
+    public function update(BookFormRequest $request, $id)
     {
         $book = Book::where('book_id_public', '=', $id)->first();
 

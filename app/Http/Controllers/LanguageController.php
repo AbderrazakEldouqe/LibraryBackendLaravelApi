@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\AppHelper;
+use App\Http\Requests\LanguageFormRequest;
 use App\Http\Resources\LanguageResource;
 use App\Models\Language;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class LanguageController extends Controller
         return LanguageResource::collection($languages);
     }
 
-    public function store(Request $request)
+    public function store(LanguageFormRequest $request)
     {
         $language = new Language();
         $language->name = $request->name;
@@ -46,7 +47,7 @@ class LanguageController extends Controller
         return new LanguageResource($language);
     }
 
-    public function update(Request $request, $id)
+    public function update(LanguageFormRequest $request, $id)
     {
         $language = Language::where('language_id_public', '=', $id)->first();
 

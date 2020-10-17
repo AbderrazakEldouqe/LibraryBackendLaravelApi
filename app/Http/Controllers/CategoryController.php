@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\AppHelper;
+use App\Http\Requests\CategoryFormRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class CategoryController extends Controller
         return CategoryResource::collection($categories);
     }
 
-    public function store(Request $request)
+    public function store(CategoryFormRequest $request)
     {
         $category = new Category();
         $category->name = $request->name;
@@ -47,7 +48,7 @@ class CategoryController extends Controller
         return new CategoryResource($category);
     }
 
-    public function update(Request $request, $id)
+    public function update(CategoryFormRequest $request, $id)
     {
         $category = Category::where('category_id_public', '=', $id)->first();
 

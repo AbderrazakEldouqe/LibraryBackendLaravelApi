@@ -30,6 +30,7 @@ class BorrowedBookController extends Controller
         return BorrowedBookResource::collection($borrowingBooks);
     }
 
+
     public function store(Request $request)
     {
         //

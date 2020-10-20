@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+//class BorrowedBook extends Model
 class BorrowedBook extends Model
 {
     use HasFactory;

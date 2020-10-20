@@ -52,7 +52,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsToMany(
             Book::class,
-            'borrowed_books');
+            'borrowed_books')
+            ->as('pivot')
+            ->withPivot('borrowing_date','receiving_date','estimated_return_date','return_date','canceled_borrowed_book','borrowed_book_id_public');
     }
 
     /**

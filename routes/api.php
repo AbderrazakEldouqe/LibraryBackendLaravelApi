@@ -23,16 +23,24 @@ Route::group([
 });
 Route::group(['middleware' => 'auth.jwt', 'as' => 'api.'], function () {
     Route::post('auth.logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('auth.logout');
+
+    // Admin
     Route::apiResource('categories', \App\Http\Controllers\CategoryController::class);
     Route::apiResource('languages', \App\Http\Controllers\LanguageController::class);
     Route::apiResource('books', \App\Http\Controllers\BookController::class);
-    Route::apiResource('borrowedBooks', \App\Http\Controllers\BorrowedBookController::class)->except(['store','show','update','destroy']);
-    Route::post('borrowedBooks/reserve', [\App\Http\Controllers\BorrowedBookController::class,'reserveBook']);
-    Route::post('borrowedBooks/according', [\App\Http\Controllers\BorrowedBookController::class,'accordingReservation']);
-    Route::post('borrowedBooks/returning', [\App\Http\Controllers\BorrowedBookController::class,'returningBook']);
-    Route::post('borrowedBooks/canceling', [\App\Http\Controllers\BorrowedBookController::class,'cancelingReservationBook']);
-    Route::get('borrowedBooks/delay', [\App\Http\Controllers\BorrowedBookController::class,'delayedBorrowedBooks']);
-    Route::apiResource('users', \App\Http\Controllers\UserController::class)->except(['index']);;
     Route::get('usersByRole/{roleId}',[\App\Http\Controllers\UserController::class,'index']);
-    Route::get('adherentReservations',[\App\Http\Controllers\AdherentReservationController::class,'onGoingReservationByUser']);
+
+    // Admin And Bilbiothecaire
+    Route::apiResource('borrowedBooks', \App\Http\Controllers\BorrowedBookController::class)->except(['store','show','update','destroy']);
+    Route::put('borrowedBooks/according/{id}', [\App\Http\Controllers\BorrowedBookController::class,'accordingReservation']);
+    Route::put('borrowedBooks/returning/{id}', [\App\Http\Controllers\BorrowedBookController::class,'returningBook']);
+    Route::put('borrowedBooks/canceling/{id}', [\App\Http\Controllers\BorrowedBookController::class,'cancelingReservationBook']);
+    Route::get('borrowedBooks/delay', [\App\Http\Controllers\BorrowedBookController::class,'delayedBorrowedBooks']);
+
+    // Admin And User
+    Route::apiResource('users', \App\Http\Controllers\UserController::class)->except(['index']);;
+
+    // Adherent
+    Route::get('adherentReservations/onGoingReservation',[\App\Http\Controllers\AdherentReservationController::class,'onGoingReservationByUser']);
+    Route::post('adherentReservations/reserve', [\App\Http\Controllers\AdherentReservationController::class,'reserveBook']);
 });

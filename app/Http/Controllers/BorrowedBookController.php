@@ -6,6 +6,7 @@ use App\Helpers\AppHelper;
 use App\Http\Resources\BorrowedBookResource;
 use App\Models\Book;
 use App\Models\BorrowedBook;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -27,7 +28,10 @@ class BorrowedBookController extends Controller
             ->with('book')
             ->with('user')
             ->get();
+//        $books = User::with('books')->get();
+
         return BorrowedBookResource::collection($borrowingBooks);
+//        return $books;
     }
 
 
@@ -51,48 +55,9 @@ class BorrowedBookController extends Controller
         //
     }
 
-    public function reserveBook(Request $request)
+    public function accordingReservation(Request $request, $id)
     {
-        $book_id = $request->book_id;
-        $book = Book::where('book_id_public', '=', $book_id)->first();
-
-        if (!$book) {
-            return AppHelper::notFoundError($book_id, 'book');
-        }
-
-        if ($book->sotck_quantity <= 0) {
-            return AppHelper::LackOfQuantityStockBookError($book_id, 'Book');
-        }
-
-        $borrowed_book = new BorrowedBook();
-        $borrowed_book->borrowing_date = Carbon::now();
-        $borrowed_book->user_id = $this->user->id;
-        $borrowed_book->book_id = $book->id;
-        $borrowed_book->borrowed_book_id_public = Str::random(32);
-        if ($borrowed_book->save()) {
-            $book->sotck_quantity--;
-            if ($book->save()) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Book with id ' . $book_id . ' has been reserved '
-                ], 200);
-            }
-        }
-        return response()->json([
-            'success' => false,
-            'message' => 'Sorry, Book with id ' . $book_id . ' Cannot be reserved '
-        ], 500);
-//        $books_current_user = $this->user->books()->attach($borrowed_book,
-//            [
-//                'borrowing_date' => Carbon::now(),
-//                'borrowed_book_id_public' => Str::random(32)
-//            ]);
-
-    }
-
-    public function accordingReservation(Request $request)
-    {
-        $borrowed_book_id = $request->borrowed_book_id;
+        $borrowed_book_id = $id;
         $borrowedBook = BorrowedBook::where('borrowed_book_id_public', '=', $borrowed_book_id)->first();
 
         if (!$borrowedBook) {
@@ -115,10 +80,10 @@ class BorrowedBookController extends Controller
 
     }
 
-    public function returningBook(Request $request)
+    public function returningBook(Request $request, $id)
     {
 
-        $borrowed_book_id = $request->borrowed_book_id;
+        $borrowed_book_id = $id;
         $borrowedBook = BorrowedBook::where('borrowed_book_id_public', '=', $borrowed_book_id)->first();
 
         if (!$borrowedBook) {
@@ -140,10 +105,10 @@ class BorrowedBookController extends Controller
         ], 500);
     }
 
-    public function cancelingReservationBook(Request $request)
+    public function cancelingReservationBook(Request $request, $id)
     {
 
-        $borrowed_book_id = $request->borrowed_book_id;
+        $borrowed_book_id = $id;
         $borrowedBook = BorrowedBook::where('borrowed_book_id_public', '=', $borrowed_book_id)->first();
 
         if (!$borrowedBook) {

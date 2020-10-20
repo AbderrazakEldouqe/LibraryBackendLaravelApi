@@ -74,4 +74,34 @@ class AdherentReservationController extends Controller
         return ReservationResource::collection($borrowingBooks);
         //return $borrowingBooks;
     }
+
+    public function unreturnedBooksByUser()
+    {
+        $borrowingBooks = $this->user->books()->where('canceled_borrowed_book', '=', 0)
+            ->whereNotNull('receiving_date')
+            ->whereNotNull('estimated_return_date')
+            ->whereNull('return_date')
+            ->get();
+
+        return ReservationResource::collection($borrowingBooks);
+    }
+
+    public function returnedBooksByUser()
+    {
+        $borrowingBooks = $this->user->books()->where('canceled_borrowed_book', '=', 0)
+            ->whereNotNull('receiving_date')
+            ->whereNotNull('estimated_return_date')
+            ->whereNotNull('return_date')
+            ->get();
+
+        return ReservationResource::collection($borrowingBooks);
+    }
+
+    public function canceledBooksByUser()
+    {
+        $borrowingBooks = $this->user->books()->where('canceled_borrowed_book', '=', 1)
+            ->get();
+
+        return ReservationResource::collection($borrowingBooks);
+    }
 }
